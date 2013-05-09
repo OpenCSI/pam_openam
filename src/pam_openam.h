@@ -18,4 +18,21 @@
 #define MODULE_NAME	"pam_openam"
 #endif /* MODULE_NAME */
 
+#define DEBUG_PAM
+
+#if defined(DEBUG_PAM)
+# if defined(HAVE_SECURITY__PAM_MACROS_H)
+#  define DEBUG
+#  include <security/_pam_macros.h>
+# else
+#  define D(x) do {                         \
+    printf ("debug: %s:%d (%s): ", __FILE__, __LINE__, __FUNCTION__);   \
+    printf x;                               \
+    printf ("\n");                          \
+  } while (0)
+# endif /* HAVE_SECURITY__PAM_MACROS_H */
+#else
+# define D(x)
+#endif /* DEBUG_PAM */
+
 #endif /* PAM_OPENAM */
