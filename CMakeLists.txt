@@ -1,4 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 project(pam_openam)
 add_executable(openam_validatetoken src/openam_validatetoken.c src/commons.c)
+add_library(pam_openam SHARED src/commons.c src/pam_openam.c)
 target_link_libraries(openam_validatetoken curl)
+target_link_libraries(pam_openam curl pam)
