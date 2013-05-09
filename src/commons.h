@@ -18,5 +18,7 @@ void init_response_data(struct response_data *s);
 
 int is_token_valid(struct response_data *s);
 
+int validate_token(char *openam_url, char *username, char *token);
+
 #endif	/* COMMONS_H */
 
