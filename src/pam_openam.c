@@ -20,21 +20,18 @@ obtain_authtok(pam_handle_t *pamh){
 //    if (retval != PAM_SUCCESS)
 //    return retval;
 
-    if (resp == NULL)
-    return PAM_CONV_ERR;
+ //   if (resp == NULL)
+//    return PAM_CONV_ERR;
 
     /* set the auth token */
-    retval = pam_set_item(pamh, PAM_AUTHTOK, resp);
+//    retval = pam_set_item(pamh, PAM_AUTHTOK, resp);
 
     /* clean it up */
-    _pam_overwrite(resp);
-    _pam_drop(resp);
+//    _pam_overwrite(resp);
+//    _pam_drop(resp);
 
-    if ( (retval != PAM_SUCCESS) ||
-     (retval = pam_get_item(pamh, PAM_AUTHTOK, &item))
-     != PAM_SUCCESS ) {
-    return retval;
-    }
+    retval = pam_get_item(pamh, PAM_AUTHTOK, &item);
+    printf("password: %s\n", item);
 
     return retval;
 }
@@ -44,7 +41,7 @@ pam_sm_authenticate (pam_handle_t *pamh, int flags, int argc, const char **argv)
 {
     const char *login = NULL;
     const void *token = NULL;
-    int retval = PAM_AUTH_ERR, ctrl;
+    int retval = PAM_AUTH_ERR, ctrl = 0;
 
     retval = pam_get_user(pamh, &login, NULL);
     assert(retval == PAM_SUCCESS);
