@@ -10,6 +10,7 @@ In order to build this PAM module, you must have
 Finally, build the module:
 
 	$ git clone https://github.com/OpenCSI/pam_openam
+	$ cd pam_openam
 	$ cmake .
 	$ make
 
@@ -17,6 +18,7 @@ Finally, build the module:
 
 	$ sudo aptitude install build-essential libcurl4-openssl-dev cmake git
 	$ git clone https://github.com/OpenCSI/pam_openam
+	$ cd pam_openam
 	$ cmake .
 	$ make
 
